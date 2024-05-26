@@ -4,15 +4,17 @@ namespace HealthBar
 {
     internal class Program
     {
-        int health = 50;
-        int maxHealth = 100;
 
         private static void Main(string[] args)
         {
-            DrawBar(50, 100, ConsoleColor.Red);
+            int health = 50, maxHealth = 100;
+            int mana = 90, maxMana = 100;
+
+            DrawBar(health, maxHealth, ConsoleColor.Red,0);
+            DrawBar(mana, maxMana, ConsoleColor.Blue,1);
         }
 
-        static void DrawBar(int value, int maxValue, ConsoleColor color)
+        static void DrawBar(int value, int maxValue, ConsoleColor color, int position)
         {
             ConsoleColor defaultColor = Console.BackgroundColor;
             string bar = "";
@@ -22,7 +24,7 @@ namespace HealthBar
                 bar += " ";
             }
 
-            Console.SetCursorPosition(0, 0);
+            Console.SetCursorPosition(0, position);
             Console.Write("[");
             Console.BackgroundColor = color;
             Console.Write(bar);
